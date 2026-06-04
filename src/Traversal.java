@@ -25,17 +25,40 @@ public class Traversal {
     // System.out.println("in order:");
     // inorder(root);
 
-    printUnderThreshold(root, 5);
+    //printUnderThreshold(root, 11);
+
+    int num = countNodes(root);
+
+    System.out.println(num);
   }
   /*
   **************************************************** END OF MAIN ****************************************************
   */
 
+  public static int countNodes(TreeNode current) {
+    //make a counter variable
+    int counter = 0;
+
+    //are you null?
+    if (current == null) {
+      return counter;
+    }
+    //if you're not counter equals 1
+    counter = 1;
+
+    //follow preorder process and instead of printing add 1
+    counter += countNodes(current.left);
+    counter += countNodes(current.right);
+
+    return counter;
+  }
+
 //Print ALL nodes in the tre that have data strictly less than the threshold
 //nodes printed in preorder
   public static void printUnderThreshold(TreeNode current, int threshold) {
     if(current == null) return;
-      //if current is less than threshold
+
+    //if current is less than threshold
     if(current.value < threshold) {
       System.out.println(current.value);
     }
