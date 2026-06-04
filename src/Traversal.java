@@ -35,6 +35,7 @@ public class Traversal {
   **************************************************** END OF MAIN ****************************************************
   */
 
+  //making a method that can count all the nodes in a tree
   public static int countNodes(TreeNode current) {
     //make a counter variable
     int counter = 0;
@@ -50,6 +51,7 @@ public class Traversal {
     counter += countNodes(current.left);
     counter += countNodes(current.right);
 
+    //my question for this one would be is their a benefit of making seperate variables to hold the lower values instead of my version where i just continued to add?
     return counter;
   }
 
