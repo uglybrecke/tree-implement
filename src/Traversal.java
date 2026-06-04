@@ -1,3 +1,5 @@
+import java.nio.channels.Pipe.SourceChannel;
+
 public class Traversal {
   public static void main(String[] args) {
     TreeNode root = new TreeNode(10);
@@ -14,18 +16,32 @@ public class Traversal {
                                         new TreeNode(22)
                                         )
                             );
-    System.out.println("preorder:");
-    preorder(root);
+    // System.out.println("preorder:");
+    // preorder(root);
     
-    System.out.println("postorder:");
-    postorder(root);
+    // System.out.println("postorder:");
+    // postorder(root);
 
-    System.out.println("in order:");
-    inorder(root);
+    // System.out.println("in order:");
+    // inorder(root);
+
+    printUnderThreshold(root, 5);
   }
   /*
   **************************************************** END OF MAIN ****************************************************
   */
+
+//Print ALL nodes in the tre that have data strictly less than the threshold
+//nodes printed in preorder
+  public static void printUnderThreshold(TreeNode current, int threshold) {
+    if(current == null) return;
+      //if current is less than threshold
+    if(current.value < threshold) {
+      System.out.println(current.value);
+    }
+    printUnderThreshold(current.left, threshold);
+    printUnderThreshold(current.right, threshold);
+  }
 
   //prints all nodes in a preorder way
   public static void preorder(TreeNode current) {
